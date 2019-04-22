@@ -3,19 +3,16 @@
  */
 
 function onTouchStart(event) {
-    document.getElementById("log").innerHTML = "onTouchStart";
     if (event.touches.length == 1 && event.targetTouches.length == 1)
         onMouseDown(event.changedTouches[0]);
 }
 
 function onTouchEnd(event) {
-    document.getElementById("log").innerHTML = "onTouchEnd";
     if (event.touches.length == 0)
         onMouseUp(event.changedTouches[0]);
 }
 
 function onTouchMove(event) {
-    document.getElementById("log").innerHTML = "onTouchMove";
     if (event.touches.length == 1 && event.targetTouches.length == 1) {
         onMouseMove(event.changedTouches[0]);
         event.preventDefault(); // block page refresh gesture when pulling down on touch screen
