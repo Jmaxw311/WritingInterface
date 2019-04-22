@@ -1,7 +1,8 @@
-const width = 480;
-const height = 480;
+var wsize = Math.min(window.innerWidth, window.innerHeight);
+const width = wsize;
+const height = wsize;
 
-var renderer = new THREE.WebGLRenderer();
+var renderer = new THREE.WebGLRenderer({ alpha: true });
 renderer.setSize( width, height ); //renderer.setSize( window.innerWidth, window.innerHeight );
 document.getElementById("canvascontainer").appendChild( renderer.domElement );
 
@@ -10,6 +11,7 @@ camera.position.set( 0, 0, 100 );
 camera.lookAt( 0, 0, 0 );
 
 var scene = new THREE.Scene();
+scene.background = new THREE.Color( 0xffffff );
 
 var material = new THREE.LineBasicMaterial( { color: 0x0000ff } );
 
@@ -21,6 +23,8 @@ drawCount = 0; // draw the first 2 points, only
 
 var lines = [];
 var line = null; //new THREE.Line( geometry, material );
+
+renderer.render( scene, camera );
 
 function updateGeometry() {
     scene.remove(line);

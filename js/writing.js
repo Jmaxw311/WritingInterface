@@ -57,31 +57,35 @@ function addPoint(x, y) {
 }
 
 function onMouseDown(event) {
-    if (event.button == 0) {
+    if (!event.button || event.button == 0) {
         console.log("mouse down");
         isMouseDown = true;
         startStroke();
-        addPoint(event.offsetX, event.offsetY);
+        addPoint(event.clientX, event.clientY);
     }
 }
 
+function cancelStroke() {
+    strokes.pop();
+    scene.remove(line);
+    lines.pop();
+    renderer.render( scene, camera );
+}
+
 function onMouseUp(event) {
-    if (event.button == 0) {
+    if ((!event.button || event.button == 0) && isMouseDown) {
         console.log("mouse up");
         isMouseDown = false;
         if (drawCount < 3) { /* remove this stroke if it is too short to be a line */
-            strokes.pop();
-            scene.remove(line);
-            lines.pop();
-            renderer.render( scene, camera );
+            cancelStroke();
         }
     }
 }
 
 function onMouseMove(event) {
     if (isMouseDown && frameReady()) {
-        addPoint(event.offsetX, event.offsetY);
-        console.log("mouse moved " + event.offsetX + ", " + event.offsetY);
+        addPoint(event.clientX, event.clientY);
+        console.log("mouse moved " + event.clientX + ", " + event.clientY);
         updateGeometry();
     }
 }

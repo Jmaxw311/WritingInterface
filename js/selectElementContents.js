@@ -1,5 +1,5 @@
 /*
- *  Function taken from:
+ *  Function retrieved from:
  *  http://jsfiddle.net/3benpyj6/2/
  */
 function selectElementContents(el) {
