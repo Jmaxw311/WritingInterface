@@ -36,6 +36,7 @@ function currentStroke() {
 }
 
 function addPoint(x, y) {
+
     var stroke = currentStroke();
     if (stroke == null)
         stroke = startStroke();
@@ -61,7 +62,13 @@ function onMouseDown(event) {
         console.log("mouse down");
         isMouseDown = true;
         startStroke();
-        addPoint(event.clientX, event.clientY);
+
+        var $div = $(event.target);
+        var offset = $div.offset();
+        var x = (event.clientX - offset.left) + $(window).scrollLeft();
+        var y = (event.clientY - offset.top) + $(window).scrollTop();
+        
+        addPoint(x, y);
     }
 }
 
@@ -84,8 +91,12 @@ function onMouseUp(event) {
 
 function onMouseMove(event) {
     if (isMouseDown && frameReady()) {
-        addPoint(event.clientX, event.clientY);
-        console.log("mouse moved " + event.clientX + ", " + event.clientY);
+        var $div = $(event.target);
+        var offset = $div.offset();
+        var x = (event.clientX - offset.left) + $(window).scrollLeft();
+        var y = (event.clientY - offset.top) + $(window).scrollTop();
+        addPoint(x, y);
+        console.log("mouse moved " + x + ", " + y);
         updateGeometry();
     }
 }
