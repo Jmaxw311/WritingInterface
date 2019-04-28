@@ -39,17 +39,19 @@ function getResultsText() {
     for (si in strokes) {
         var s = strokes[si];
         var table = "";
-        var xrow = "";
-        var yrow = "";
+        var row = "";
         for (i in s.xcoordinates) {
-            xrow += s.xcoordinates[i].toString() + " ";
+            row += s.xcoordinates[i].toString();
+            row += " , ";
+            row += s.ycoordinates[i].toString();
+            row += " ; ";
         }
-        for (i in s.ycoordinates) {
-            yrow += s.ycoordinates[i].toString() + " ";
-        }
-        table += xrow + ";\n" + yrow;
-        text += "[" + table + "]\n\n";
+        table = "[" + row + "] ; ";
+        table = table.replace(" ; ]", " ]");
+        text += table;
     }
+    text = "{ " + text + " }";
+    text = text.replace(";  }", " }");
     return text;
 }
 
@@ -59,6 +61,9 @@ function sendData() {
     if (results == "") {
         $("#sendbutton").notify("No data to send.", "warn");
     } else {
-        window.open('mailto:test@example.com?subject=Test%20Results&body=' + encodeURI('Please send this Email as-is, without modifying the following message:\n\n' + results));
+        var email = 'bigbrain427@gmail.com';
+        var subject = 'Test Results';
+        var bodytext = 'Please send this Email as-is, without modifying the following message:\n\n' + results;
+        window.open('mailto:' + email + '?subject=' + encodeURI(subject) + '&body=' + encodeURI(bodytext));
     }
 }
