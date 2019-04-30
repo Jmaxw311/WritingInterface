@@ -68,7 +68,7 @@ function onMouseDown(event) {
         var x = (event.clientX - offset.left) + $(window).scrollLeft();
         var y = (event.clientY - offset.top) + $(window).scrollTop();
         
-        addPoint(x, y);
+        addPoint(x - width/2, -y + height/2);
     }
 }
 
@@ -95,7 +95,7 @@ function onMouseMove(event) {
         var offset = $div.offset();
         var x = (event.clientX - offset.left) + $(window).scrollLeft();
         var y = (event.clientY - offset.top) + $(window).scrollTop();
-        addPoint(x, y);
+        addPoint(x - width/2, -y + height/2);
         console.log("mouse moved " + x + ", " + y);
         updateGeometry();
     }
@@ -108,10 +108,11 @@ function clearStrokes() {
         scene.remove(obj);
     }
     lines.length = 0;
-    strokes.length = 0;
+    strokes = new Array();
     renderer.render( scene, camera );
 }
 
 renderer.domElement.addEventListener('mousedown', onMouseDown);
 renderer.domElement.addEventListener('mouseup', onMouseUp);
+renderer.domElement.addEventListener('mouseout', onMouseUp);
 renderer.domElement.addEventListener('mousemove', onMouseMove);

@@ -1,42 +1,9 @@
-.container {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    background-color: transparent;
-    margin: 0;
-    padding: 0;
-}
-
-.centerh {
-    left: 50%;
-    -ms-transform: translate(-50%, 0%);
-    transform: translate(-50%, 0%);
-}
-
-.centerv {
-    top: 50%;
-    -ms-transform: translate(0%, -50%);
-    transform: translate(0%, -50%);
-}
-
-.center {
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-}
-
-.centerh, .centerv, .center {
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    background-color: transparent;
-}
 
 body {
     background-color: #0e0e0e;
     color: white;
-    margin: 0;
+    width: 100%;
+    height: 100%;
 }
 
 canvas { 
@@ -52,9 +19,11 @@ div#canvascontainer {
 
 #outcontainer {
     overflow-x: scroll;
-    position: absolute;
-    width: inherit;
-    background-color: white;
+    width: 100%;
+    background-color: black;
+    overflow: hidden;
+    max-width: 1px;
+    max-height: 1px;
 }
 
 #outcontent {
@@ -66,14 +35,94 @@ div#canvascontainer {
     border-spacing: 0;
 }
 
-@media screen and (orientation: portrait) {
+button {
+    margin: 2pt;
+    text-align: center;
+    display: block;
+}
+
+#controls {
+    text-align: center;
+}
+
+#layout {
+    display: flex;
+    flex-direction: column;
+}
+
+.side {
+    min-height: 120px;
+    text-align: center;
+    padding: 3pt;
+}
+
+.center {
+    min-height: 200px;
+}
+
+@media (min-width: 600px) and (orientation:landscape) {
+    #layout {
+        flex-direction: row;
+    }
     .side {
-        height: auto;
-        width: 100%;
+        min-width: 260px;
+    }
+    .center {
+        flex-basis: 100%;
+    }
+}
+
+.spacer {
+    width: 10pt;
+    height: 10pt;
+    background-color: transparent;
+}
+
+@media screen and (orientation:landscape) {
+    .side {
+        font-size: 3vh;
+    }
+    button {
+        font-size: 5vh;
+        display: block;
+    }
+    .spacer {
+        display: block;
+    }
+}
+
+@media screen and (orientation:portrait) {
+    .side {
+        font-size: 3vw;
+    }
+    button {
+        font-size: 5vw;
+        display: inline-block;
+    }
+    .spacer {
+        display: inline-block;
     }
 }
 
 .bigtext {
-    font-size: 120%;
+    font-size: 150%;
     font-weight: bold;
+    color: yellow;
+}
+
+.notetext {
+    font-size: 70%;
+}
+
+.keytext {
+    color: lightskyblue;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
+
+.hidden > .spacer {
+    display: none;
 }
