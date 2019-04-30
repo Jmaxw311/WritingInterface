@@ -3,27 +3,39 @@
 	<head>
 		<meta charset=utf-8>
 		<title>Writing Interface</title>
-		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="style.css?2">
 	</head>
 	<body style="background-color: black;">
-        <div class="center">
-            <div class="container">
-                    <div id="canvascontainer"></div>
-                    <button onclick="clearStrokes();">Clear</button> 
-                    <button onclick="copyData();" id="copybutton">Copy Data</button> 
-                    <button onclick="sendData();" id="sendbutton">Send Data</button>
-                    <div id="outcontainer"><div id="outcontent"></div></div>
-            </div>
-        </div>
-        
-        <script src="js/jquery-3.4.0.min.js"></script>
-        <script src="js/notify.min.js"></script>
-        <script src="js/three.min.js"></script>
-        <script src="js/selectElementContents.js"></script>
 
-        <script src="js/graphics.js?2"></script>
-        <script src="js/interface.js?3"></script>
-        <script src="js/writing.js?2"></script>
-        <script src="js/touch.js?2"></script>
+                <div class="center">
+                        <div class="container">
+                                <div id="canvascontainer"></div>
+                                <button onclick="clearStrokes();">Clear</button> 
+                                <button onclick="copyData();" id="copybutton">Copy Data</button> 
+                                <button onclick="sendData();" id="sendbutton">Send Data</button>
+                                <div id="outcontainer"><div id="outcontent"></div></div>
+                        </div>
+                </div>
+                
+                <div id="info" class="side">
+                        <div id="prompt">
+                                <div class="container">
+                                
+                                Write the number <span id="drawthis" class="bigtext">one</span> in the big white box.<br><br>
+                                Please write all numbers as numerals (i.e. one = 1).
+                                
+                                </div>
+                        </div>
+                </div>
+                
+                <script src="js/jquery-3.4.0.min.js"></script>
+                <script src="js/notify.min.js"></script>
+                <script src="js/three.min.js"></script>
+                <script src="js/selectElementContents.js"></script>
+
+                <script src="js/graphics.js?2"></script>
+                <script src="js/interface.js?3"></script>
+                <script src="js/writing.js?2"></script>
+                <script src="js/touch.js?2"></script>
 	</body>
 </html>

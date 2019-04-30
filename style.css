@@ -7,15 +7,30 @@
     padding: 0;
 }
 
+.centerh {
+    left: 50%;
+    -ms-transform: translate(-50%, 0%);
+    transform: translate(-50%, 0%);
+}
+
+.centerv {
+    top: 50%;
+    -ms-transform: translate(0%, -50%);
+    transform: translate(0%, -50%);
+}
+
 .center {
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    background-color: transparent;
     top: 50%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+}
+
+.centerh, .centerv, .center {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    background-color: transparent;
 }
 
 body {
@@ -49,4 +64,16 @@ div#canvascontainer {
 #outcontent table, th, td {
     border: thin solid lightslategray;
     border-spacing: 0;
+}
+
+@media screen and (orientation: portrait) {
+    .side {
+        height: auto;
+        width: 100%;
+    }
+}
+
+.bigtext {
+    font-size: 120%;
+    font-weight: bold;
 }
