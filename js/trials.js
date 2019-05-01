@@ -54,7 +54,7 @@ function selectTrial(n) {
         clearStrokes();
         if (n >= trials.length) {
             $("#nextbutton").addClass("hidden");
-            //$("#copybutton").removeClass("hidden");
+            $("#copybutton").removeClass("hidden");
             $("#sendbutton").removeClass("hidden");
             $("#prompt").html('Thank you for taking the time to produce this sample. Please click the button below to send us your results.');
         }
