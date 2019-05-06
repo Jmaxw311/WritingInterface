@@ -33,13 +33,15 @@ function getResultsText() {
         }
         trial = "{ " + trial + " }";
         trial = trial.replace(";  }", " }");
-        trial += " " + results[ti].canvas.toFixed(0);
+        trial += "," + results[ti].canvas.toFixed(0);
         text += trial + "; ";
     }
     text = "{ " + text + " }";
-    text = text.replace(";  }", " }");
-    text = text.replaceAll(" ", "");
-    console.log(text);
+    text = text.replaceAll(" ", ""); // remove spaces (condense/optimize for URI)
+    text = text.replaceAll(",;", ";"); // remove empty columns
+    text = text.replaceAll(";,", ";"); // remove empty columns
+    text = text.replaceAll(";}", "}"); // remove empty rows
+    text = text.replaceAll(",}", "}"); // remove empty columns
     return text;
 }
 
