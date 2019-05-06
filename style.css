@@ -126,3 +126,8 @@ button {
 .hidden > .spacer {
     display: none;
 }
+
+.outline {
+    background-color: white;
+    color: black;
+}
